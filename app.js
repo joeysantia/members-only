@@ -39,29 +39,24 @@ app.use(compression());
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      console.log("began authentication");
       const user = await User.findOne({ username: username });
-      console.log("found user");
       if (!user) {
-        console.log("no such user");
         return done(null, false, { message: "Incorrect username" });
       }
 
-      const match = bcrypt.compare(password, user.password);
+      const match = await bcrypt.compare(password, user.password);
 
       if (!match) {
-        console.log("incorrect password");
         return done(null, false, { message: "Incorrect password" });
       }
 
-      console.log("success");
       return done(null, user);
     } catch (err) {
       return done(err);
     }
   })
 );
-//if bugs, then change to anonymous function
+
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
