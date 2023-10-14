@@ -52,10 +52,43 @@ const sign_in_post = [
       next();
     }
   },
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/sign-in",
-  }),
+  (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+      if (err) {
+        return res.render("login-form", {
+          user: req.user,
+          title: "Sign In",
+          action: "/sign-in",
+          buttonText: "Sign In",
+          linkHref: "/sign-up",
+          linkText: "Register a new account",
+          errors: [{ msg: "Authentication failed "}],
+        });
+      }
+
+      if (!user) {
+        return res.render("login-form", {
+          user: req.user,
+          title: "Sign In",
+          action: "/sign-in",
+          buttonText: "Sign In",
+          linkHref: "/sign-up",
+          linkText: "Register a new account",
+          errors: [{ msg: "Either the username or password is incorrect"}],
+        });
+      }
+
+      return res.render("login-form", {
+        user: req.user,
+        title: "Sign In",
+        action: "/sign-in",
+        buttonText: "Sign In",
+        linkHref: "/sign-up",
+        linkText: "Register a new account",
+        errors: [],
+      });
+    })(req, res, next)
+  }
 ];
 
 const sign_up_get = (req, res) => {
