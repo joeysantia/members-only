@@ -28,6 +28,10 @@ a {
   color: var(--members-blue);
 }
 
+img {
+  height: 1.5em;
+}
+
 header {
   position: fixed; 
   top: 2rem;
