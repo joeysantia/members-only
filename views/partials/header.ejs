@@ -1,0 +1,11 @@
+<header>
+    <a id="logo" href="/">
+        <h1>Members Only</h1>
+    </a>
+    <p>An exclusive message board</p>
+    <% if (user) { %>
+        <a href="/log-out">Log out</a>
+    <% } else { %>
+        <a href="/sign-in">Sign in</a>
+    <% } %>
+</header>

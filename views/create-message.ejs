@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+    <%- include('partials/header') %>
+    <%- include('partials/sidebar') %>
+    <main>
+        <h2>Create message</h2>
+        <form action="create-message" method="POST">
+            <label for="title">Message Title</label>
+            <input 
+                type="text"
+                id="title"
+                name="title"
+                value="<%= title %>"
+                required
+            />
+            <label for="message-text">
+                Message Text (max 500 characters)
+            </label>
+            <textarea
+                type='text'
+                id="message-text"
+                name="message_text"
+                rows="10"
+                cols="45"
+                value="<%= messageText %>"
+                required
+            ></textarea>
+            <button type="submit">Post Message</button>
+        </form>
+        <%- include('partials/errors') %>
+    </main>
+</body>
+</html>

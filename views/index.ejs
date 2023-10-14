@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+    <%- include('partials/header') %>
+    <%- include('partials/sidebar') %>
+    <main>
+    <% if (user) { %>
+      <% if (messages.length > 0) { %>
+        <% messages.forEach(message => { %>
+          <div class="message">
+            <div class="top-row">
+              <div class="left-col">
+                <h4>
+                  <% if (user.is_member || user.username === message.user.username) { %>
+                    <%= message.user.full_name %>
+                  <% } else { %>
+                    Anonymous
+                  <% } %> 
+                </h4>
+                  <span>
+                    <%= message.timestamp_formatted %> ago
+                  </span>
+              </div>
+                <% if (user.is_admin) { %>
+                  <a href="<%= "/delete-message/" + message._id %>">
+                    <img src="images/delete.png" alt="delete message">
+                  </a>
+                <% } %>
+            </div>
+            <h3>
+              <%= message.title %>
+            </h3>
+            <p>
+              <%= message.text %>
+            </p>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <h4>No messages to display!</h4>
+      <% } %>
+      <a href="/create-message">
+        Create new message
+      </a>
+    <% } else { %>
+      <h4>Please log in to view messages.</h4>
+    <% } %>
+    </main>
+</body>
+</html>

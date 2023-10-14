@@ -1,0 +1,14 @@
+<aside>
+    <% if (user) { %>
+        <% if (!user.is_member) { %>
+            <a href="/become-member">
+                Become a Member
+            </a>
+        <% } %>
+        <% if (!user.is_admin) { %>
+            <a href="/become-admin">
+                Become an Admin
+            </a>
+        <% } %>
+    <% } %>
+</aside>

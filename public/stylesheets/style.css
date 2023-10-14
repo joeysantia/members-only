@@ -1,0 +1,131 @@
+:root {
+  --members-black: #010101;
+  --members-dark-grey: #1c1c1c;
+  --members-grey: #4a4a4a;
+  --members-light-grey: #6d6d6d;
+  --members-white: #e6e6e6;
+  --members-blue: #3f63b5;
+  --members-light-blue: #d1f5ff;
+  --members-radius: 12px;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: var(--members-black);
+  background-color: var(--members-white);
+  height: 100vh;
+  width: 100vw; 
+  margin-top: 8rem;
+  padding: 2rem;
+  overflow: scroll;
+}
+
+h1, h4 {
+  margin: 0;
+}
+
+a {
+  color: var(--members-blue);
+}
+
+header {
+  position: fixed; 
+  top: 2rem;
+  left: 2rem;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 2fr 5fr 1fr;
+  grid-template-rows: 1fr; 
+  align-items: center;
+  z-index: 99;
+  background-color: var(--members-white);
+}
+
+#logo {
+  text-decoration: none;
+  color: var(--members-black);
+}
+
+main, aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+aside {
+  position: fixed;
+  left: 2rem;
+  top: 10rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+  font-size: 1.25rem;
+  border: 2px solid var(--members-black); 
+  border-radius: var(--members-radius);
+  padding: 0.75em 1em;
+}
+
+form > button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  padding: 0.5em 1.5em;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+input {
+  width: 15em;
+  font-size: 1em;
+}
+
+.message {
+  border: 2px solid var(--members-black);
+  border-radius: var(--members-radius);
+  width: 60%;
+  padding: 0.5rem 1rem;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-col {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.left-col > span {
+  font-style: italic;
+  font-size: 0.75em;
+}
+
+textarea {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+  header {
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  aside {
+    margin-bottom: 1em;
+    position: inherit;
+  }
+}

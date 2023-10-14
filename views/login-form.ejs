@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+    <%- include('partials/header') %>
+    <main>
+    <h2>
+        <%= title %>
+    </h2>    
+    <form action="<%= action %>" method="POST">
+        <% if (action === "/sign-up") { %>
+            <label for="first-name">First Name</label>
+            <input  
+                name="first_name"
+                type="text"
+                id="first-name"
+                required
+                placeholder="Sam"
+            />
+            <label for="first-name">Last Name</label>
+            <input 
+                name="last_name"
+                type="text"
+                id="last-name"
+                placeholder="Smith"
+            />
+        <% } %>
+        <label for="username">Username</label>
+        <input 
+            name="username"
+            type="text"
+            id="username"
+            required
+            placeholder="sam or sam@example.com"
+        />
+        <label for="password">Password</label>
+        <input 
+            name="password"
+            id="password"
+            type="password"
+            required
+        />
+        <button type="submit">
+            <%= buttonText %>
+        </button>
+    </form>
+    <hr>
+    <a href="<%= linkHref %>">
+        <%= linkText %>
+    </a>
+    <%- include('partials/errors') %>
+    </main>
+</body>
+</html>
