@@ -53,7 +53,7 @@ const sign_in_post = [
     }
   },
   (req, res, next) => {
-    passport.authenticate('local', (err, user, info) => {
+    passport.authenticate("local", async (err, user, info) => {
       if (err) {
         return res.render("login-form", {
           user: req.user,
@@ -62,7 +62,7 @@ const sign_in_post = [
           buttonText: "Sign In",
           linkHref: "/sign-up",
           linkText: "Register a new account",
-          errors: [{ msg: "Authentication failed "}],
+          errors: [{ msg: "Authentication failed " }],
         });
       }
 
@@ -74,21 +74,21 @@ const sign_in_post = [
           buttonText: "Sign In",
           linkHref: "/sign-up",
           linkText: "Register a new account",
-          errors: [{ msg: "Either the username or password is incorrect"}],
+          errors: [{ msg: "Either the username or password is incorrect" }],
         });
       }
 
-      return res.render("login-form", {
-        user: req.user,
-        title: "Sign In",
-        action: "/sign-in",
-        buttonText: "Sign In",
-        linkHref: "/sign-up",
-        linkText: "Register a new account",
-        errors: [],
+      const messages = await Message.find()
+        .populate("user")
+        .sort({ timestamp: 1 })
+        .exec();
+
+      res.render("index", {
+        user: user,
+        messages: messages,
       });
-    })(req, res, next)
-  }
+    })(req, res, next);
+  },
 ];
 
 const sign_up_get = (req, res) => {
