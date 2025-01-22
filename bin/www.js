@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-import app from '../app.js'
+import app from '../api/index.js'
 import debugConfig from 'debug'
 import http from 'http'
 
