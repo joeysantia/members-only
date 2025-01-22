@@ -3,7 +3,7 @@ import { body, validationResult } from "express-validator";
 import Message from "../models/message.js";
 import User from "../models/user.js";
 import bcrypt from "bcryptjs";
-import { passport } from "../app.js";
+import { passport } from "../api/index.js";
 
 const index = asyncHandler(async (req, res, next) => {
   const messages = await Message.find()
