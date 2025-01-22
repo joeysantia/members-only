@@ -1,5 +1,7 @@
 import createError from "http-errors";
 import express from "express";
+import debugConfig from 'debug'
+import http from 'http'
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
@@ -12,8 +14,8 @@ import dotenv from "dotenv";
 import compression from "compression";
 import session from "express-session";
 import RateLimit from "express-rate-limit";
-import indexRouter from "./routes/index.js";
-import User from "./models/user.js";
+import indexRouter from "../routes/index.js";
+import User from "../models/user.js";
 
 const __dirname = path.resolve();
 dotenv.config();
